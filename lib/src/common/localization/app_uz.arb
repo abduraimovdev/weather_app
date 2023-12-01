@@ -1,0 +1,9 @@
+{
+  "services_app": "Weather App",
+  "update": "Обновить",
+  "no_cached_data": "Нет кэшированных данных",
+  "details": "Детали",
+  "m_sec": "м/сек",
+  "home" : "Asosiy",
+  "card" : "Karta"
+}

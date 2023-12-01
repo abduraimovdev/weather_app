@@ -1,0 +1,8 @@
+# l10n.yaml
+arb-dir: lib/src/common/localization
+template-arb-file: app_uz.arb
+output-localization-file: localization.dart
+output-class: Localization
+nullable-getter: false
+synthetic-package: false
+preferred-supported-locales: [ en, ru, uz ]
