@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/src/common/theme/theme.dart';
 import 'package:weather_app/src/common/util/extension/context_extensions.dart';
-import 'package:weather_app/src/features/main/screens/add_card/widgets/w_card.dart';
 import 'package:weather_app/src/features/main/screens/card/widgets/w_view_card.dart';
 
 import '../bloc/card_bloc.dart';
