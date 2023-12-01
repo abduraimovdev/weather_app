@@ -22,8 +22,9 @@ final class AppConstants {
   static const DEFAULT_LAT = 50.4501;
   static const DEFAULT_LON = 30.5234;
   static const DEFAULT_GEOCODE = GeoCode(
-      name: 'Kyiv',
-      lat: AppConstants.DEFAULT_LAT,
-      lon: AppConstants.DEFAULT_LON,
-      country: 'UA');
+    name: 'Kyiv',
+    lat: AppConstants.DEFAULT_LAT,
+    lon: AppConstants.DEFAULT_LON,
+    country: 'UA',
+  );
 }

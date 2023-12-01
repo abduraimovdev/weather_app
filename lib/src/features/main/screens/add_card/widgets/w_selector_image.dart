@@ -17,7 +17,7 @@ class WSelectorImage extends StatelessWidget {
         itemCount: AppImg.cardBackgroundImages.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.only(left: 16),
+          padding: AppSize.paddingLeft16,
           child: GestureDetector(
             onTap: () {
               context.read<AddCardBloc>().add(AddCardBackgroundEvent(img: AppImg.cardBackgroundImages[index]));

@@ -16,7 +16,7 @@ class WHourly extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WBackground(
-      onPressed: () {},
+      onPressed: () => context.pushNamed(AppRouteNames.detail, extra: weather),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

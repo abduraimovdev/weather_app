@@ -6,8 +6,11 @@ import 'package:weather_app/src/features/main/bloc/main_bloc.dart';
 import 'package:weather_app/src/features/main/screens/add_card/bloc/add_card_bloc.dart';
 import 'package:weather_app/src/features/main/screens/add_card/screens/add_card_screen.dart';
 import 'package:weather_app/src/features/main/screens/home/bloc/weather_bloc.dart';
+import 'package:weather_app/src/features/main/screens/home/screens/detail/screens/detail_screen.dart';
 import 'package:weather_app/src/features/main/screens/main_screen.dart';
 
+import '../../features/main/screens/home/data/models/daily_weather.dart';
+import '../../features/main/screens/home/data/models/hourly_weather.dart';
 import '../../features/splash/screens/splash_screen.dart';
 import '../dependecies/dependency_injection.dart';
 import '../util/snack_bar.dart';
@@ -41,37 +44,61 @@ class AppRouter {
         ),
       ),
       GoRoute(
-          name: AppRouteNames.main,
-          path: AppRoutes.main,
-          pageBuilder: (context, state) => _customPageTransition<void>(
-                context: context,
-                state: state,
-                child: MultiBlocProvider(
-                  providers: [
-                    BlocProvider(
-                        create: (BuildContext context) => $sl<MainBloc>()),
-                    BlocProvider(
-                      create: (BuildContext context) => $sl<WeatherBloc>()
-                        ..add(const WeatherSetCurrentLocationEvent()),
-                    ),
-                  ],
-                  child: const MainScreen(),
-                ),
+        name: AppRouteNames.main,
+        path: AppRoutes.main,
+        pageBuilder: (context, state) => _customPageTransition<void>(
+          context: context,
+          state: state,
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (BuildContext context) => $sl<MainBloc>()),
+              BlocProvider(
+                create: (BuildContext context) => $sl<WeatherBloc>()
+                  ..add(const WeatherSetCurrentLocationEvent()),
               ),
-          routes: [
-            GoRoute(
-              name: AppRouteNames.addCard,
-              path: AppRoutes.addCard,
-              pageBuilder: (context, state) => _customPageTransition<void>(
-                context: context,
-                state: state,
-                child: BlocProvider(
-                  create: (BuildContext context) => $sl<AddCardBloc>(),
-                  child: const AddCardScreen(),
-                ),
+            ],
+            child: const MainScreen(),
+          ),
+        ),
+        routes: [
+          GoRoute(
+              name: AppRouteNames.detail,
+              path: AppRoutes.detail,
+              pageBuilder: (context, state) {
+                DailyWeather? dailWeather;
+                HourlyWeather? hourlyWeather;
+                if (state.extra is DailyWeather) {
+                  dailWeather = state.extra as DailyWeather;
+                }
+                if (state.extra is HourlyWeather) {
+                  hourlyWeather = state.extra as HourlyWeather;
+                }
+                return _customPageTransition<void>(
+                  context: context,
+                  state: state,
+                  child: BlocProvider(
+                    create: (BuildContext context) => $sl<AddCardBloc>(),
+                    child: DetailScreen(
+                      dWeather: dailWeather,
+                      hWeather: hourlyWeather,
+                    ),
+                  ),
+                );
+              }),
+          GoRoute(
+            name: AppRouteNames.addCard,
+            path: AppRoutes.addCard,
+            pageBuilder: (context, state) => _customPageTransition<void>(
+              context: context,
+              state: state,
+              child: BlocProvider(
+                create: (BuildContext context) => $sl<AddCardBloc>(),
+                child: const AddCardScreen(),
               ),
             ),
-          ]),
+          ),
+        ],
+      ),
     ],
   );
 

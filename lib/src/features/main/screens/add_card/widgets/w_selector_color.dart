@@ -19,7 +19,7 @@ class WSelectorColor extends StatelessWidget {
         itemCount: 16,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.only(left: 16),
+          padding: AppSize.paddingLeft16,
           child: GestureDetector(
             onTap: () {
               context.read<AddCardBloc>().add(AddCardBackgroundEvent(color: Colors.primaries[index]));

@@ -21,16 +21,10 @@ class _CardScreenState extends State<CardScreen> {
         child: BlocBuilder<CardBloc, CardState>(
           builder: (context, state) {
             return ListView.builder(
-              itemCount: state.cards.length,
+              itemCount: state.data?.cards.length ?? 0,
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.only(top: 30),
-                child: WViewCard(
-                  cardNumber: state.cards[index].cardNumber,
-                  cardName: state.cards[index].cardHolderName,
-                  expiryDate: state.cards[index].expiryDate,
-                  color: state.cards[index].color,
-                  backgroundImg: state.cards[index].backgroundImg,
-                ),
+                child: WViewCard(card: state.data!.cards[index]),
               ),
             );
           },

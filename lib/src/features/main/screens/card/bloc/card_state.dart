@@ -9,23 +9,23 @@ enum CardStatus {
 
 class CardState extends Equatable {
   final CardStatus status;
-  final List<CardModel> cards;
+  final CardResponse? data;
 
   const CardState({
     required this.status,
-    required this.cards,
+    this.data,
   });
 
   @override
-  List<Object?> get props => [status, cards];
+  List<Object?> get props => [status, data];
 
   CardState copyWith({
     CardStatus? status,
-    List<CardModel>? cards,
+    CardResponse? data,
   }) {
     return CardState(
       status: status ?? this.status,
-      cards: cards ?? this.cards,
+      data: data ?? this.data,
     );
   }
 }

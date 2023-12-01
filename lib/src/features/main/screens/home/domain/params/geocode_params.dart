@@ -13,7 +13,7 @@ class GeoCodeParams {
     this.limit = 1,
   });
 
-  Map<String, dynamic> toJson() {
+  Map<String, Object?> toJson() {
     return {
       'lat': lat,
       'lon': lon,

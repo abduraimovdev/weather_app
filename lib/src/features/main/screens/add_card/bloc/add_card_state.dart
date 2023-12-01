@@ -11,15 +11,15 @@ class AddCardState extends Equatable {
   const AddCardState({
     required this.status,
     this.color = Colors.blue,
-    this.backgroundImg ,
+    this.backgroundImg,
     required this.cardNumber,
     required this.cardHolderName,
     required this.expiryDate,
   });
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
+        status,
         color,
         backgroundImg,
         cardNumber,
@@ -37,7 +37,7 @@ class AddCardState extends Equatable {
   }) {
     return AddCardState(
       status: status ?? this.status,
-      color: color ,
+      color: color,
       backgroundImg: backgroundImg,
       cardNumber: cardNumber ?? this.cardNumber,
       cardHolderName: cardHolderName ?? this.cardHolderName,

@@ -1,26 +1,26 @@
 import 'dart:async';
-import 'dart:ui';
-
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/src/features/main/screens/add_card/data/models/card_model.dart';
+import 'package:weather_app/src/features/main/screens/add_card/domain/params/card_params.dart';
 
 import '../domain/repository/card_repository.dart';
+import '../domain/usecase/add_card.dart';
 
 part 'add_card_event.dart';
 
 part 'add_card_state.dart';
 
 class AddCardBloc extends Bloc<AddCardEvent, AddCardState> {
-  final CardRepository repository;
+  final AddCard addCard;
 
-  AddCardBloc({required this.repository})
+  AddCardBloc({required this.addCard})
       : super(
           const AddCardState(
             cardNumber: '8800 0017 1705 5566',
-            cardHolderName: 'Esther Howard',
-            expiryDate: '0230',
+            cardHolderName: 'Mustafo Alimov',
+            expiryDate: '02/30',
             status: AddCardStatus.initial,
           ),
         ) {
@@ -62,7 +62,7 @@ class AddCardBloc extends Bloc<AddCardEvent, AddCardState> {
     if (event.cardNumber != null) {
       emit(
         state.copyWith(
-          expiryDate: event.cardNumber,
+          cardNumber: event.cardNumber,
           status: AddCardStatus.fieldChange,
           backgroundImg: state.backgroundImg,
           color: state.color,
@@ -72,7 +72,7 @@ class AddCardBloc extends Bloc<AddCardEvent, AddCardState> {
     if (event.cardHolderName != null) {
       emit(
         state.copyWith(
-          expiryDate: event.cardHolderName,
+          cardHolderName: event.cardHolderName,
           status: AddCardStatus.fieldChange,
           backgroundImg: state.backgroundImg,
           color: state.color,
@@ -84,8 +84,8 @@ class AddCardBloc extends Bloc<AddCardEvent, AddCardState> {
   Future<void> _addCard(CardAddEvent event, Emitter emit) async {
     if ((state.color != null || state.backgroundImg != null) &&
         state.cardHolderName.isNotEmpty &&
-        state.cardNumber.isNotEmpty &&
-        state.expiryDate.isNotEmpty) {
+        state.cardNumber.length > 18 &&
+        state.expiryDate.length > 4) {
       final card = CardModel(
         color: state.color,
         backgroundImg: state.backgroundImg,
@@ -93,10 +93,22 @@ class AddCardBloc extends Bloc<AddCardEvent, AddCardState> {
         cardHolderName: state.cardHolderName,
         expiryDate: state.expiryDate,
       );
-      await repository.setCard(card);
-      emit(state.copyWith(status: AddCardStatus.successAdd, color: state.color, backgroundImg: state.backgroundImg));
+      await addCard.call(CardAddParams(card));
+      emit(
+        state.copyWith(
+          status: AddCardStatus.successAdd,
+          color: state.color,
+          backgroundImg: state.backgroundImg,
+        ),
+      );
     } else {
-      emit(state.copyWith(status: AddCardStatus.errorAdd, color: state.color, backgroundImg: state.backgroundImg));
+      emit(
+        state.copyWith(
+          status: AddCardStatus.errorAdd,
+          color: state.color,
+          backgroundImg: state.backgroundImg,
+        ),
+      );
     }
   }
 }

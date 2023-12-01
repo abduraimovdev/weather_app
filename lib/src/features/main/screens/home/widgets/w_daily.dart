@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
@@ -8,7 +7,6 @@ import '../../../../../common/theme/theme.dart';
 
 import '../data/models/daily_weather.dart';
 import 'w_background.dart';
-
 
 class WDaily extends StatelessWidget {
   final DailyWeather? weather;
@@ -21,7 +19,7 @@ class WDaily extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WBackground(
-      onPressed: () {},
+      onPressed: () => context.pushNamed(AppRouteNames.detail, extra: weather),
       child: Row(
         children: [
           Text(

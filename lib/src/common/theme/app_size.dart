@@ -10,6 +10,7 @@ final class AppSize {
 
   // Radius
   static BorderRadius radiusAll12 = BorderRadius.circular(12);
+  static BorderRadius radiusAll16 = BorderRadius.circular(16);
   static BorderRadius radiusAll40 = BorderRadius.circular(40);
 
   // Padding
@@ -19,5 +20,8 @@ final class AppSize {
   static const EdgeInsets paddingH16 = EdgeInsets.symmetric(horizontal: 16);
   static const EdgeInsets paddingLeft4 = EdgeInsets.only(left: 4);
   static const EdgeInsets paddingLeft24 = EdgeInsets.only(left: 24);
+  static const EdgeInsets paddingAll20 = EdgeInsets.all(20);
+  static const EdgeInsets paddingLeft16 = EdgeInsets.only(left: 16);
+  static const EdgeInsets paddingTop24 = EdgeInsets.only(top: 24);
 
 }

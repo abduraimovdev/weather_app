@@ -14,7 +14,7 @@ class WCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SizedBox(
         width: double.infinity,
-        height: 250,
+        height: 200,
         child: BlocBuilder<AddCardBloc, AddCardState>(
           builder: (context, state) {
             return DecoratedBox(
@@ -31,10 +31,7 @@ class WCard extends StatelessWidget {
                       ),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
-                ),
+                padding: AppSize.paddingAll20,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,11 +41,7 @@ class WCard extends StatelessWidget {
                       children: [
                         Text(
                           'Visa',
-                          style: TextStyle(
-                            color: context.color.white,
-                            fontSize: 30,
-                            fontStyle: FontStyle.italic,
-                          ),
+                          style: context.textStyle.kGreyStyle30wItalic,
                         ),
                       ],
                     ),
@@ -57,12 +50,7 @@ class WCard extends StatelessWidget {
                       children: [
                         Text(
                           state.cardNumber,
-                          style: TextStyle(
-                            color: context.color.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 1.5,
-                          ),
+                          style: context.textStyle.kGreyStyle30wBold,
                         ),
                         AppSize.sizeH10,
                         Row(
@@ -72,17 +60,11 @@ class WCard extends StatelessWidget {
                               children: [
                                 Text(
                                   'Card holder name',
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.7),
-                                    fontSize: 12,
-                                  ),
+                                  style: context.textStyle.kGreyStyle12,
                                 ),
                                 Text(
                                   state.cardHolderName,
-                                  style: TextStyle(
-                                    color: context.color.white,
-                                    fontSize: 16,
-                                  ),
+                                  style: context.textStyle.kGreyStyle16,
                                 ),
                               ],
                             ),
@@ -90,17 +72,11 @@ class WCard extends StatelessWidget {
                               children: [
                                 Text(
                                   'Expiry date',
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.7),
-                                    fontSize: 12,
-                                  ),
+                                  style: context.textStyle.kGreyStyle12,
                                 ),
                                 Text(
                                   state.expiryDate,
-                                  style: TextStyle(
-                                    color: context.color.white,
-                                    fontSize: 16,
-                                  ),
+                                  style: context.textStyle.kGreyStyle16,
                                 ),
                               ],
                             ),

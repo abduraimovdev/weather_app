@@ -1,0 +1,3 @@
+class GetCardsParams {
+  const GetCardsParams();
+}

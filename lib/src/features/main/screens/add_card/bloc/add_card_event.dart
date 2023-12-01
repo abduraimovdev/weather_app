@@ -26,7 +26,7 @@ class AddCardChangeEvent extends AddCardEvent {
   });
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [cardNumber, cardHolderName, expiryDate];
 }
 
 class CardAddEvent extends AddCardEvent {
