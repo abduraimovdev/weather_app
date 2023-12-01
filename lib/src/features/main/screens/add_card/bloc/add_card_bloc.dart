@@ -94,9 +94,9 @@ class AddCardBloc extends Bloc<AddCardEvent, AddCardState> {
         expiryDate: state.expiryDate,
       );
       await repository.setCard(card);
-      emit(state.copyWith(status: AddCardStatus.successAdd));
+      emit(state.copyWith(status: AddCardStatus.successAdd, color: state.color, backgroundImg: state.backgroundImg));
     } else {
-      emit(state.copyWith(status: AddCardStatus.errorAdd));
+      emit(state.copyWith(status: AddCardStatus.errorAdd, color: state.color, backgroundImg: state.backgroundImg));
     }
   }
 }
