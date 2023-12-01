@@ -41,11 +41,11 @@ class _AddCardScreenState extends State<AddCardScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppSize.sizeH20,
-            WCard(),
+            const WCard(),
             AppSize.sizeH10,
-            WSelectorColor(),
+            const WSelectorColor(),
             AppSize.sizeH10,
-            WSelectorImage(),
+            const WSelectorImage(),
             AppSize.sizeH10,
             CustomTextField(
               label: 'Card Holder Name',
