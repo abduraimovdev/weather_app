@@ -50,7 +50,7 @@ class _MainScreenState extends State<MainScreen> {
             children: [
               const HomeScreen(),
               BlocProvider(
-                create: (context) => $sl<CardBloc>(),
+                create: (context) => $sl<CardBloc>()..add(const GetCardEvent()),
                 child: const CardScreen(),
               ),
             ],

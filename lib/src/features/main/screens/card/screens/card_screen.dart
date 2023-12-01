@@ -21,6 +21,7 @@ class _CardScreenState extends State<CardScreen> {
       body: BlocBuilder<CardBloc, CardState>(
         builder: (context, state) {
           return ListView.builder(
+            itemCount: state.cards.length,
             itemBuilder: (context, index) => WViewCard(
               cardNumber: state.cards[index].cardNumber,
               cardName: state.cards[index].cardHolderName,

@@ -6,7 +6,7 @@ import 'package:weather_app/src/common/service/local_data_storage/local_data_sto
 
 Future<void> initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
-  LocalDataStorage.init();  
+  LocalDataStorage.init();
   Bloc.observer = SimpleBlocObserver();
   injection();
 }

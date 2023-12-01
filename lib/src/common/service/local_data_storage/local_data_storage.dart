@@ -19,7 +19,7 @@ class LocalDataStorage {
   }
 
   static Future<List<CardModel>> getCars() async {
-    final response = _box.get("cards");
+    final response = _box.get("cards", defaultValue: jsonEncode([]));
     final data = jsonDecode(response);
     return (data as List).map((e) => CardModel.fromJson(e)).toList();
   }
